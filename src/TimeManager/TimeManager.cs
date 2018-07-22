@@ -63,13 +63,20 @@ public static partial class TimeManager {
         ResetPauseLayers();
     }
 
+    public static IEnumerator ShortMultiplier(float mutliplier, float time) {
+        AddMultiplier(mutliplier);
+        yield return new WaitForSecondsRealtime(time);
+        RemoveMultiplier(mutliplier);
+    }
+
     private static void apply() {
-        float time = 1;
+        float timeScale = 1;
         if (nrOfPauseLayers > 0) {
-            time = 0;
+            timeScale = 0;
         } else {
-            time *= timeMultiplier;
+            timeScale *= timeMultiplier;
         }
-        Time.timeScale = time;
+        Time.timeScale = timeScale;
+        Time.fixedDeltaTime = timeScale * 0.02f;
     }
 }
