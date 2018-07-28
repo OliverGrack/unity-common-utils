@@ -1,12 +1,14 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static partial class TimeManager {
-    public class TimeResetter : MonoBehaviour {
+namespace UCU {
+	public static partial class TimeManager {
+		public class TimeResetter : MonoBehaviour {
 
-        void Start() {
-            TimeManager.Reset();
-        }
-    }
+			private void Start() {
+				TimeManager.Reset();
+			}
+		}
+	}
 }
