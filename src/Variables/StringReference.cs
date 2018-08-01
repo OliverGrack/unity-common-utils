@@ -21,8 +21,8 @@ namespace UCU {
                     case Type.Value: return ConstantValue;
                     case Type.StringVariable: return Variable.Value;
                     case Type.RemoteSetting: return RemoteSettings.GetString(ConstantValue);
-                    case Type.LanguageString: return Language.Get(ConstantValue);
-                    case Type.RemoteLanguageString: return Language.Get(RemoteSettings.GetString(ConstantValue));
+                    case Type.LanguageString: return I18n.Get(ConstantValue);
+                    case Type.RemoteLanguageString: return I18n.Get(RemoteSettings.GetString(ConstantValue));
                     default: throw new Exception("Invalid type");
                 }
             }

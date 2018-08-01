@@ -14,3 +14,6 @@ These submodules are:
 #### [SubjectNerd's ReorderableInspector](https://github.com/SubjectNerd-Unity/ReorderableInspector)
 ReorderableAttribute, which allows for a better List/Array UX inside of Unity componentes.
 
+#### [Bunny83's SimpleJSON](https://github.com/Bunny83/SimpleJSON)
+Allows Internationalization Lib to parse JSON files.
+If this lib is already in your project, delete on of the 2 versions.
