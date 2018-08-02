@@ -5,6 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+#if UNITY_EDITOR
+using UnityEditor;
+using System.Text;
+#endif
+
 namespace UCU {
 	[Serializable]
 	public class LanguageConfig {
@@ -17,7 +22,17 @@ namespace UCU {
 	public class I18nConfig : ScriptableObject, ISerializationCallbackReceiver {
 
 		[Reorderable]
-		public LanguageConfig[] Languages;
+		public LanguageConfig[] Languages = {
+			new LanguageConfig {
+				SystemLanguage = SystemLanguage.English,
+				IsoName = "en",
+				FallbackLanguage = true,
+			},
+			new LanguageConfig {
+				SystemLanguage = SystemLanguage.German,
+				IsoName = "de",
+			}
+		};
 
 		public LanguageConfig GetFallbackLanguage() {
 			return Languages.Where(lang => lang.FallbackLanguage).FirstOrDefault();
@@ -38,5 +53,21 @@ namespace UCU {
 			}
 #endif
 		}
+
+#if UNITY_EDITOR
+
+		[ContextMenu("Create missing language files")]
+		private void CreateMissingLanguageFiles() {
+			foreach (var lang in Languages) {
+				string path = LanguageFileLoader.GetAssetPath(lang.IsoName);
+				bool langAssetDoesExist = AssetDatabase.LoadAssetAtPath<TextAsset>(path) != null;
+				if (!langAssetDoesExist) {
+					TextAsset text = new TextAsset();
+					AssetDatabase.CreateAsset(text, path);
+				}
+			}
+		}
+
+#endif
 	}
 }

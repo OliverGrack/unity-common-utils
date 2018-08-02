@@ -6,10 +6,18 @@ using UnityEngine;
 namespace UCU {
 	public static class LanguageFileLoader {
 
+		public static string GetAssetPath(string isoCode) {
+			return $"Assets/Resources/{GetResourcePath(isoCode)}.json";
+		}
+
+		public static string GetResourcePath(string isoCode) {
+			return "I18n/lang_" + isoCode;
+		}
+
 		public static Dictionary<string, string> LoadFile(string isoCode) {
 			Dictionary<string, string> languageStrings = new Dictionary<string, string>();
 
-			TextAsset textAsset = Resources.Load<TextAsset>("I18n/lang_" + isoCode);
+			TextAsset textAsset = Resources.Load<TextAsset>(GetResourcePath(isoCode));
 
 			JSONNode json = JSON.Parse(textAsset.text);
 			AnalizeJSONObject(languageStrings, json, "");
