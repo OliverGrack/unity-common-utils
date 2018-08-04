@@ -1,6 +1,6 @@
 [submodule "third-party/ReorderableInspector"]
 	path = third-party/ReorderableInspector
-	url = https://github.com/SubjectNerd-Unity/ReorderableInspector
+	url = https://github.com/SubjectNerd-Unity/ReorderableInspector.git
 [submodule "third-party/SimpleJSON"]
 	path = third-party/SimpleJSON
 	url = https://github.com/Bunny83/SimpleJSON.git
