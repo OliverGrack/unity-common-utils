@@ -20,7 +20,6 @@ namespace UCU {
 
 	[CreateAssetMenu(fileName = "I18nConfig.asset", menuName = "I18nConfig")]
 	public class I18nConfig : ScriptableObject, ISerializationCallbackReceiver {
-
 		[Reorderable]
 		public LanguageConfig[] Languages = {
 			new LanguageConfig {
