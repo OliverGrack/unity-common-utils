@@ -14,9 +14,8 @@ namespace UCU {
 #if UNITY_EDITOR
 
 		private void Update() {
-			if (Application.isPlaying) {
+			if (!Application.isPlaying) {
 				Start();
-				Debug.Log("Update");
 			}
 		}
 
