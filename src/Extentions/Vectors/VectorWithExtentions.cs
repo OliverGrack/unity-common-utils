@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace UCU {
     public static partial class VectorExtentions {
-
         public static Vector2 xy(this Vector3 v) {
             return new Vector2(v.x, v.y);
         }
@@ -48,8 +45,23 @@ namespace UCU {
         /// <param name="vec"></param>
         /// <param name="mag"></param>
         /// <returns></returns>
-        public static Vector3 WithMagnitude(this Vector2 vec, float mag) {
+        public static Vector2 WithMagnitude(this Vector2 vec, float mag) {
             return vec.normalized * mag;
+        }
+
+        public static Vector3 With(this Vector3 vec, float? x = null, float? y = null, float? z = null) {
+            return new Vector3(
+                x ?? vec.x,
+                y ?? vec.y,
+                z ?? vec.z
+            );
+        }
+
+        public static Vector2 With(this Vector2 vec, float? x = null, float? y = null) {
+            return new Vector2(
+                x ?? vec.x,
+                y ?? vec.y
+            );
         }
     }
 }
