@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace UCU {
@@ -51,6 +50,26 @@ namespace UCU {
         /// <returns></returns>
         public static Color WithA(this Color color, float alpha) {
             return new Color(color.r, color.g, color.b, alpha);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Color With(this Color color, float? r = null, float? g = null, float? b = null, float? a = null) {
+            return new Color(
+                r ?? color.r,
+                g ?? color.g,
+                b ?? color.b,
+                a ?? color.a
+            );
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Color32 With(this Color32 color, byte? r = null, byte? g = null, byte? b = null, byte? a = null) {
+            return new Color32(
+                r ?? color.r,
+                g ?? color.g,
+                b ?? color.b,
+                a ?? color.a
+            );
         }
     }
 }
